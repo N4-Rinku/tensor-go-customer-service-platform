@@ -8,9 +8,13 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   if (req.cookies[TOKEN]) {
+<<<<<<< HEAD
+    res.redirect("/app");
+=======
     res
       .status(400)
       .json({ message: "Cookies are already set, try to log out" });
+>>>>>>> 6c4a28f6238a723148ed9b424f36270887aba5c1
     return;
   }
 
@@ -78,7 +82,11 @@ router.get("/google/callback", async (req, res) => {
       maxAge: COOKIE.MAXAGE.REFRESH,
     });
 
+<<<<<<< HEAD
+    res.redirect("/app");
+=======
     res.status(200).json({ message: "Logged in successfully" });
+>>>>>>> 6c4a28f6238a723148ed9b424f36270887aba5c1
   } else res.status(500).json({ message: "Couldn't get you logged in!" });
 });
 

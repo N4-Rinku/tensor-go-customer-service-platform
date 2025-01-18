@@ -86,17 +86,28 @@ export const validateToken = async (token) => {
 const validateAuth = async (req, res, next) => {
   const token = req.cookies[TOKEN] ?? null;
   if (token === null) {
+<<<<<<< HEAD
+    res.redirect("/landing");
+=======
     res.redirect("/");
+>>>>>>> 6c4a28f6238a723148ed9b424f36270887aba5c1
     return;
   }
 
   const result = await validateToken(token);
   if (
     result.valid === false ||
+<<<<<<< HEAD
+    result.userData?.intercomContactId === undefined
+  ) {
+    res.clearCookie(TOKEN);
+    res.redirect("/landing");
+=======
     result.userData.intercomContactId === undefined
   ) {
     res.clearCookie(TOKEN);
     res.status(403).json({ message: "Invalid Access" });
+>>>>>>> 6c4a28f6238a723148ed9b424f36270887aba5c1
     return;
   }
 
